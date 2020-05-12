@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Button</title>
+    <style>
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 17%;
+        }
+
+        #shareDiv img {
+            width: 30px;
+            height: auto;
+            position: relative;
+        }
+
+        .socialImg {
+            display: none;
+            position: absolute;
+        }
+
+        .socialImg img {
+            width: 30px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        @keyframes test {
+            from {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            80%{
+                transform: translate(0px, -110px);
+                opacity: 1;
+            }
+            to {
+                transform: translate(0px, -105px);
+            }
+        }
+
+        @keyframes test1 {
+            from {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+
+            80%{
+                transform: translate(-80px, -70px);
+                opacity: 1;
+            }
+
+            to {
+                transform: translate(-75px, -65px);
+            }
+        }
+
+        @keyframes test2 {
+            from {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+
+            80%{
+                transform: translate(80px, -70px);
+                opacity: 1;
+            }
+
+            to {
+                transform: translate(75px, -65px);
+            }
+        }
+    </style>
+    <script>
+        // Toggle for changing behavior as per click
+        var issharable = false;
+        function share() {
+            if(issharable){
+                var opa = document.getElementsByClassName("socialImg");
+                for (var j = 0; j < opa.length; j++) {
+                    opa[j].style.display="none";
+                }
+            }
+            else { 
+                document.getElementById('fbDiv').style.animationName = "test";
+                document.getElementById('wpDiv').style.animationName = "test1";
+                document.getElementById('instaDiv').style.animationName = "test2";
+                var elem = document.getElementsByClassName("socialImg");
+
+                for ( var i = 0; i < elem.length; i++) {
+                    elem[i].style.display = 'block';
+                    elem[i].style.animationDuration = "0.5s";
+                    elem[i].style.animationFillMode = "forwards";
+                }
+            }
+            issharable = !issharable;
+        }
+    </script>
+</head>
+<body>
+    <div class="main">
+        <div id="shareDiv" onclick="share()" >
+            <img src="share.png" alt="">
+        </div>
+        <div class="socialImg" id="fbDiv">
+            <img src="fb.png" alt="">
+        </div>
+        <div class="socialImg" id="wpDiv">
+            <img src="wp.png" alt="">
+        </div>
+        <div class="socialImg" id="instaDiv">
+            <img src="insta.png" alt="">
+        </div>
+    </div>
+</body>
+</html>
